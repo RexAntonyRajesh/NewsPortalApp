@@ -1,0 +1,39 @@
+<div class="main-popup">
+<p>
+    <mat-toolbar color="primary">     
+      <span>Article Detail</span>
+    </mat-toolbar>
+  </p>
+
+<form [formGroup]="articleForm" (ngSubmit)="onFormSubmit()">
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline" class="input-common">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" formControlName="title">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline" class="input-common">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" formControlName="description">
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="outline" class="input-common">
+                <mat-label>Category</mat-label>
+                <mat-select formControlName="categoryId">
+                    <mat-option *ngFor="let val of Categories" [value]="val.categoryId">{{val.categoryType}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action" style="float: right;">
+        <button mat-raised-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+    </div>
+</form>
+</div>
