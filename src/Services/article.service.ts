@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
-apiUrl:string ="https://localhost:7281/api/Article"
-  constructor(private _http: HttpClient) {}
+apiUrl:string;
+  constructor(private _http: HttpClient) {
+    this.apiUrl = environment.newsPortalAPIUrl + 'Article'
+  }
 
   addArticle(data: any): Observable<any> {
     return this._http.post(this.apiUrl, data);
